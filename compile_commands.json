@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/smilo/projects/linarith",
+    "file": "/home/smilo/projects/linarith/src/main.cpp",
+    "output": "/home/smilo/projects/linarith/build/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/matrix.o",
+      "src/matrix.cpp"
+    ],
+    "directory": "/home/smilo/projects/linarith",
+    "file": "/home/smilo/projects/linarith/src/matrix.cpp",
+    "output": "/home/smilo/projects/linarith/build/matrix.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/vector.o",
+      "src/vector.cpp"
+    ],
+    "directory": "/home/smilo/projects/linarith",
+    "file": "/home/smilo/projects/linarith/src/vector.cpp",
+    "output": "/home/smilo/projects/linarith/build/vector.o"
+  }
+]
