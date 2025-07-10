@@ -75,6 +75,14 @@ Vector Vector::subtract(const Vector& other) const {
     return result;
 }
 
+Vector Vector::scale(double scalar) const {
+    Vector result(data.size());
+    for(std::size_t i = 0; i < data.size(); i++) {
+        result.set(i, data[i] * scalar);
+    }
+    return result;
+}
+
 
 bool Vector::isOrthogonal(const Vector& other) const {
     return std::abs(dot(other)) < 1e-10; // For handling small round off errors

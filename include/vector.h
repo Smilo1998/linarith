@@ -17,6 +17,7 @@ public:
     double dot(const Vector& other) const;
     Vector add(const Vector& other) const;
     Vector subtract(const Vector& other) const;
+    Vector scale(double scalar) const;
     bool isOrthogonal(const Vector& other) const;
     void print() const;
 
