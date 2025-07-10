@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 #include "vector.h"
 
 
@@ -87,6 +88,22 @@ Vector Vector::scale(double scalar) const {
 bool Vector::isOrthogonal(const Vector& other) const {
     return std::abs(dot(other)) < 1e-10; // For handling small round off errors
 }
+
+
+double Vector::angleBetween(const Vector& other) const {
+    if (norm() == 0 || other.norm() == 0) {
+        throw std::invalid_argument("Angle between any vector and a zero vector is undefined");
+    }
+    return acos(dot(other) / (norm() * other.norm()));
+}
+
+double Vector::angleBetweenDegrees(const Vector& other) const {
+    if (norm() == 0 || other.norm() == 0) {
+        throw std::invalid_argument("Angle between any vector and a zero vector is undefined");
+    }
+    return angleBetween(other) * (180.0 / M_PI);
+}
+
 
 
 
