@@ -14,7 +14,12 @@ public:
     double get(Index index) const;
     Size size() const;
     double norm() const;
+    double dot(const Vector& other) const;
+    Vector add(const Vector& other) const;
+    Vector subtract(const Vector& other) const;
+    bool isOrthogonal(const Vector& other) const;
     void print() const;
+
 
 private:
     std::vector<double> data;

@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <cstdint>
 #include <iostream>
 #include <cmath>
@@ -38,6 +39,45 @@ void Vector::print() const {
         }
     }
     std::cout << "]\n";
+}
+
+double Vector::dot(const Vector& other) const {
+    if (data.size() != other.data.size()) {
+        throw std::invalid_argument("Vectors not the same size");
+    }
+
+    double sum{};
+    for (std::size_t i = 0; i < data.size(); i++) {
+        sum += data[i] * other.data[i];
+    }
+    return sum;
+}
+
+Vector Vector::add(const Vector& other) const {
+    if (data.size() != other.data.size()) {
+        throw std::invalid_argument("Vectors not the same size");
+    }
+    Vector result(data.size());
+    for(std::size_t i = 0; i < data.size(); i++) {
+        result.set(i, data[i] + other.data[i]);
+    }
+    return result;
+}
+
+Vector Vector::subtract(const Vector& other) const {
+    if (data.size() != other.data.size()) {
+        throw std::invalid_argument("Vectors not the same size");
+    }
+    Vector result(data.size());
+    for(std::size_t i = 0; i < data.size(); i++) {
+        result.set(i, data[i] - other.data[i]);
+    }
+    return result;
+}
+
+
+bool Vector::isOrthogonal(const Vector& other) const {
+    return std::abs(dot(other)) < 1e-10; // For handling small round off errors
 }
 
 
