@@ -5,7 +5,6 @@
 #include <stdexcept>
 #include "vector.h"
 
-
 using Index = std::uint64_t;
 using Size = std::uint64_t;
 
@@ -89,6 +88,33 @@ bool Vector::isOrthogonal(const Vector& other) const {
     return std::abs(dot(other)) < 1e-10; // For handling small round off errors
 }
 
+bool Vector::isLineardependent(const Vector& other) const {
+    constexpr double EPSILON = 1e-6;
+    if(data.size() != other.data.size())
+        return false;
+
+    double scalar{};
+    bool scalarSet = false;
+
+    for(std::size_t i = 0; i < data.size(); i++) {
+        if (data[i] == 0 && other.data[i] == 0)
+            continue;
+        if((data[i] == 0 && other.data[i] != 0) || (data[i] != 0 && other.data[i] == 0))
+            return false;
+        double ratio = data[i] / other.data[i];
+        if (!scalarSet) { 
+            scalar = ratio;
+            scalarSet = true;
+        } else if (std::abs(ratio - scalar) > EPSILON)
+            return false;     
+    }
+    return true;
+}
+
+Vector Vector::findOrthogonal() const {
+    Vector orthogonal_vector(data.size());
+    return orthogonal_vector;
+}
 
 double Vector::angleBetween(const Vector& other) const {
     if (norm() == 0 || other.norm() == 0) {

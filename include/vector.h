@@ -12,6 +12,9 @@ using Size = std::uint64_t;
  */
 class Vector {
 public:
+    //Constructor
+    Vector(const std::vector<double>& values) : data(values) {};
+
     /**
      * @brief Constructs a vector of the given size with all values initialized to zero.
      * @param size The number of elements in the vector.
@@ -91,6 +94,19 @@ public:
      * @return True if the vectors are orthogonal, false otherwise.
      */
     bool isOrthogonal(const Vector& other) const;
+    
+     /**
+     * @brief Determines if two vectors are linearly dependent.
+     * @param other The other vector.
+     * @return True if the vectors are linear dependent, false otherwise.
+     */
+    bool isLineardependent(const Vector& other) const;
+    
+    /**
+     * @brief Finds and returns and orthogonal vector
+     * @returns Vector which is ortogonal to method parent
+     */
+    Vector findOrthogonal() const;
 
     /**
      * @brief Prints the vector to the console.
